@@ -19,12 +19,12 @@ grid = [[0, 0, 0, 0, 0, 0],
         [0, 1, 0, 0, 0, 0],
         [0, 1, 0, 0, 1, 0]]
 
-heuristic2 = [[9, 8, 7, 6, 5, 4],
+heuristic    = [[9, 8, 7, 6, 5, 4],
              [8, 7, 6, 5, 4, 3],
              [7, 6, 5, 4, 3, 2],
              [6, 5, 4, 3, 2, 1],
              [5, 4, 3, 2, 1, 0]]
-heuristic = [[0 for row in range(len(grid[0]))] for col in range(len(grid))]
+#[[0 for row in range(len(grid[0]))] for col in range(len(grid))]
 
 init = [0, 0]
 goal = [len(grid)-1, len(grid[0])-1]
@@ -55,7 +55,7 @@ def search(grid,init,goal,cost,heuristic):
     # f function -> g + h(x,y)
     f = g + h
 
-    open = [[f, g, x, y]]
+    open = [[f, g, x, y, h]]
 
     found = False  # flag that is set when search is complete
     resign = False # flag set if we can't find expand
@@ -88,7 +88,7 @@ def search(grid,init,goal,cost,heuristic):
                             g2 = g + cost
                             h2 = heuristic[x2][y2]
                             f2 = g2 + h2
-                            open.append([f2, g2, x2, y2])
+                            open.append([f2, g2, x2, y2, h2])
                             closed[x2][y2] = 1
 
     
