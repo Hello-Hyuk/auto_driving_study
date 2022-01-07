@@ -55,6 +55,7 @@ def search(grid,init,goal,cost,heuristic):
     # f function -> g + h(x,y)
     f = g + h
 
+    # f를 맨앞에 두어 sort시 f값 기준으로 사용
     open = [[f, g, x, y, h]]
 
     found = False  # flag that is set when search is complete
